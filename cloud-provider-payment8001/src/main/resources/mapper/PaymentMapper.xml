@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.zk.springcloud.dao.PaymentDao">
+    <!-- id里是dao接口里的方法名，parameterType为dao接口方法里对应所传的参数类型,useGeneratedKeys为操作的状态，keyProperty为返回的id -->
+    <insert id="create" parameterType="Payment" useGeneratedKeys="true" keyProperty="id">
+        insert into payment(serial) values(#{serial});
+    </insert>
+
+    <!-- id为map映射的标记，type为所映射的实体类 -->
+    <resultMap id="BaseResultMap" type="cn.zk.springcloud.entities.Payment">
+        <!-- column为数据库字段名，property为实体类属性名 -->
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <id column="serial" property="serial" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!-- id里是dao接口里的方法名，parameterType为dao接口方法里对应所传的参数类型，resultMap为后台的实体与数据库的map映射 -->
+    <select id="getPaymentById" parameterType="Long" resultMap="BaseResultMap">
+        select * from payment where id=#{id};
+    </select>
+
+</mapper>
