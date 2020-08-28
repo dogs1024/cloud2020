@@ -4,12 +4,21 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.zk.springcloud</groupId>
+  <groupId>cn.zk.springcloud</groupId>
   <artifactId>cloud2020</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <!-- cloud-provider-payment8001子模块 -->
   <modules>
+    <!-- 微服务提供者支付Module模块 -->
     <module>cloud-provider-payment8001</module>
+
+    <!-- 微服务消费者订单Module模块 -->
+      <module>cloud-consumer-order80</module>
+
+    <!-- 公共模块 -->
+    <module>cloud-api-commons</module>
+
+    <!-- eureka服务注册中心Module模块 -->
+      <module>cloud-eureka-server7001</module>
   </modules>
   <!-- 父工程 -->
   <packaging>pom</packaging>
@@ -27,7 +36,7 @@
     <junit.version>4.12</junit.version>
     <lombok.version>1.18.10</lombok.version>
     <log4j.version>1.2.17</log4j.version>
-    <mysql.version>8.0.18</mysql.version>
+    <mysql.version>5.1.47</mysql.version>
     <druid.version>1.1.16</druid.version>
     <mybatis.spring.boot.version>2.1.1</mybatis.spring.boot.version>
   </properties>
@@ -96,6 +105,13 @@
       <version>${log4j.version}</version>
     </dependency>
 
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>${lombok.version}</version>
+      <optional>true</optional>
+    </dependency>
+
     <!-- 解决创建maven项目出错maven-project-info-reports-plugin异常 -->
     <dependency>
       <groupId>org.apache.maven.plugins</groupId>
@@ -122,38 +138,26 @@
   </properties>-->
 
   <build>
-    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
-      <plugins>
-        <plugin>
-          <artifactId>maven-clean-plugin</artifactId>
-          <version>3.1.0</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-site-plugin</artifactId>
-          <version>3.7.1</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-project-info-reports-plugin</artifactId>
-          <version>3.0.0</version>
-        </plugin>
-      </plugins>
-    </pluginManagement>
+<!--    <finalName>cloud2020</finalName>-->
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-site-plugin</artifactId>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
         <configuration>
-          <locales>en,fr</locales>
+          <fork>true</fork>
+          <addResources>true</addResources>
         </configuration>
       </plugin>
+
+      <!-- 使用指定的jdk版本编译 -->
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+
     </plugins>
   </build>
-
-  <reporting>
-    <plugins>
-      <plugin>
-        <artifactId>maven-project-info-reports-plugin</artifactId>
-      </plugin>
-    </plugins>
-  </reporting>
 </project>

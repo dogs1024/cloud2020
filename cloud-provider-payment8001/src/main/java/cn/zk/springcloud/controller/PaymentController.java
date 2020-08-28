@@ -25,10 +25,10 @@ public class PaymentController {
 
     //@RequestMapping                           //地址映射
     @PostMapping(value = "/payment/creat")      //restuful风格。因为对数据库进行写操作。
-    public CommonResult creat(Payment payment){
+    public CommonResult creat(@RequestBody Payment payment){        //@RequestBody 接收前端传递给后端的数据
         int creat = paymentService.creat(payment);
         log.info("插入状态："+creat);
-        if (creat>1) {
+        if (creat>0) {
             return new CommonResult(200,"插入数据库成功",creat);
         }else {
             return new CommonResult(500,"插入数据库失败",null);

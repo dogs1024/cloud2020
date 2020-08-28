@@ -4,7 +4,7 @@
 
 <mapper namespace="cn.zk.springcloud.dao.PaymentDao">
     <!-- id里是dao接口里的方法名，parameterType为dao接口方法里对应所传的参数类型,useGeneratedKeys为操作的状态，keyProperty为返回的id -->
-    <insert id="create" parameterType="Payment" useGeneratedKeys="true" keyProperty="id">
+    <insert id="creat" parameterType="Payment" useGeneratedKeys="true" keyProperty="id">
         insert into payment(serial) values(#{serial});
     </insert>
 
