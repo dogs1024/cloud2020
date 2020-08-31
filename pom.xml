@@ -19,6 +19,8 @@
 
     <!-- eureka服务注册中心Module模块 -->
       <module>cloud-eureka-server7001</module>
+      <module>cloud-eureka-server7002</module>
+      <module>cloud-provider-payment8002</module>
   </modules>
   <!-- 父工程 -->
   <packaging>pom</packaging>
