@@ -19,8 +19,12 @@
 
     <!-- eureka服务注册中心Module模块 -->
       <module>cloud-eureka-server7001</module>
+    <!-- 集群 -->
       <module>cloud-eureka-server7002</module>
       <module>cloud-provider-payment8002</module>
+
+    <!-- 整合zookeeper -->
+      <module>cloud-provider-payment8004</module>
   </modules>
   <!-- 父工程 -->
   <packaging>pom</packaging>

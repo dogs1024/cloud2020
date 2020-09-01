@@ -25,6 +25,11 @@ eureka:
 #     defaultZone: http://localhost:7001/eureka    # 单机版配置
      defaultZone: http://eureka7001.cn:7001/eureka,http://eureka7002.cn:7002/eureka    # 集群版配置
 
+#  配置别名。一般为主机名跟端口。防止服务挂了，快速排查是哪台主机的哪个端口服务出现问题。
+  instance:
+    instance-id: payment8002
+    prefer-ip-address: true        # 访问路径可以显示ip地址
+
 mybatis:
   mapperLocations: classpath:mapper/*.xml
   type-aliases-package: cn.zk.springcloud.entities        # 所有Entity别名类所在包

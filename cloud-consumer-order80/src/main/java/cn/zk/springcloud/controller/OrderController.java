@@ -20,7 +20,8 @@ import javax.annotation.Resource;
 @Slf4j
 public class OrderController {
     //服务调用地址
-    public static final String PAYMENT_URL="http://localhost:8001";
+//    public static final String PAYMENT_URL="http://localhost:8001";       //单机版。写死
+    public static final String PAYMENT_URL="http://CLOUD-PAYMENT-SERVICE";         //集群版。写服务名称。
 
     @Resource           //将RestTemplate注入进来
     private RestTemplate restTemplate;

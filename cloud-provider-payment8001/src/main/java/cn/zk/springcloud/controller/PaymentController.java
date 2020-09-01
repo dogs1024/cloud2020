@@ -6,9 +6,12 @@ import cn.zk.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author zk
@@ -26,6 +29,9 @@ public class PaymentController {
 
     @Value("${server.port}")
     private String serverPort;
+
+    @Resource
+    private DiscoveryClient discoveryClient;        //服务发现。将服务暴露给使用者。
 
     //@RequestMapping                           //地址映射
     @PostMapping(value = "/payment/creat")      //restuful风格。因为对数据库进行写操作。
@@ -50,4 +56,19 @@ public class PaymentController {
             return new CommonResult(500,"没有对应的记录，查询ID："+id,null);
         }
     }
+
+    //服务发现
+    @GetMapping(value = "/payment/discovery")
+    public Object discovery(){
+        List<String> services = discoveryClient.getServices();
+        for (String element : services) {
+            log.info("********element"+element);
+        }
+        List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
+        for (ServiceInstance instance : instances) {
+            log.info(instance.getServiceId()+"\t"+instance.getHost()+"\t"+instance.getPort()+"\t"+instance.getUri());
+        }
+        return this.discoveryClient;
+    }
+
 }
