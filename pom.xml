@@ -25,6 +25,7 @@
 
     <!-- 整合zookeeper -->
       <module>cloud-provider-payment8004</module>
+    <module>cloud-consumerzk-order80</module>
   </modules>
   <!-- 父工程 -->
   <packaging>pom</packaging>
