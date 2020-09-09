@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 /**
  * @author zk
  * @version 1.0
- * @description
+ * @description springcloud整合zookeeper  服务消费者
  * @date 2020/9/7 10:38
  */
 @RestController
