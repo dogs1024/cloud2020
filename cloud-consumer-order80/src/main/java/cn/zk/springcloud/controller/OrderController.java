@@ -3,6 +3,7 @@ package cn.zk.springcloud.controller;
 import cn.zk.springcloud.entities.CommonResult;
 import cn.zk.springcloud.entities.Payment;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,8 +32,33 @@ public class OrderController {
         return  restTemplate.postForObject(PAYMENT_URL+"/payment/creat",payment,CommonResult.class);
     }
 
+    /**
+     * 返回对象为响应体中数据转化成的对象。JSON串
+     * @param id
+     * @return CommonResult
+     */
     @GetMapping("/consumer/payment/get/{id}")
     public CommonResult<Payment> getPayment(@PathVariable("id") Long id){
         return  restTemplate.getForObject(PAYMENT_URL+"/payment/get/"+id,CommonResult.class);
+    }
+
+    /**
+     * 返回对象为ResponseEntity对象，包含了响应中的一些重要信息，如响应头、响应状态码、响应体...
+     * @param id
+     * @return CommonResult
+     */
+    @GetMapping("/consumer/payment/getEntity/{id}")
+    public CommonResult<Payment> getPayment2(@PathVariable("id") Long id){
+        ResponseEntity<CommonResult> entity = restTemplate.getForEntity(PAYMENT_URL + "/payment/get/" + id, CommonResult.class);
+        if (entity.getStatusCode().is2xxSuccessful()) {
+            return entity.getBody();
+        }else {
+            return new CommonResult<>(444,"操作失败！");
+        }
+    }
+
+    @GetMapping("/consumer/payment/entity/creat")
+    public CommonResult<Payment> creat2(Payment payment){
+        return  restTemplate.postForEntity(PAYMENT_URL+"/payment/creat",payment,CommonResult.class).getBody();
     }
 }
