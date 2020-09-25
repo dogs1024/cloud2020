@@ -26,8 +26,12 @@
     <!-- 整合zookeeper -->
       <module>cloud-provider-payment8004</module>
     <module>cloud-consumerzk-order80</module>
+
+    <!-- 整合consul -->
     <module>cloud-providerconsul-payment8006</module>
     <module>cloud-consumerconsul-order80</module>
+
+
   </modules>
   <!-- 父工程 -->
   <packaging>pom</packaging>

@@ -3,12 +3,14 @@ package cn.zk.springcloud.controller;
 import cn.zk.springcloud.entities.CommonResult;
 import cn.zk.springcloud.entities.Payment;
 import cn.zk.springcloud.service.PaymentService;
+import com.netflix.ribbon.proxy.annotation.Http;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletRequest;
 
 /**
  * @author zk
@@ -50,4 +52,11 @@ public class PaymentController {
             return new CommonResult(500,"没有对应的记录，查询ID："+id,null);
         }
     }
+
+    //测试手写轮询负载均衡算法
+    @GetMapping(value = "/payment/lb")
+    public String getPaymentLB(){
+        return serverPort;
+    }
+
 }
