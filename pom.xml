@@ -30,6 +30,7 @@
     <!-- 整合consul -->
     <module>cloud-providerconsul-payment8006</module>
     <module>cloud-consumerconsul-order80</module>
+      <module>cloud-consumer-feign-order80</module>
 
 
   </modules>

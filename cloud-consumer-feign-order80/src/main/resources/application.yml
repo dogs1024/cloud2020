@@ -1,0 +1,14 @@
+server:
+  port: 8088
+eureka:
+  client:
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://eureka7001.cn:7001/eureka, http://eureka7002.cn:7002/eureka
+
+# 设置Feign客户端超时时间（OpenFeign默认支持Ribbon）
+ribbon:
+  # 建立链接所用的时间，适用于网络状态正常的情况下，两端链接所用的时间
+  ReadTimeout:  5000
+  # 建立链接后从服务器读到可用资源所用的时间。注：OpenFeign默认等待1s，1s后未读到服务端资源报错超时Read timed out executing GET http://CLOUD-PAYMENT-SERVICE/payment/feign/timeout
+  ConnectTimeout: 5000
