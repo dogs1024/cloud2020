@@ -12,3 +12,8 @@ ribbon:
   ReadTimeout:  5000
   # 建立链接后从服务器读到可用资源所用的时间。注：OpenFeign默认等待1s，1s后未读到服务端资源报错超时Read timed out executing GET http://CLOUD-PAYMENT-SERVICE/payment/feign/timeout
   ConnectTimeout: 5000
+
+logging:
+  level:
+    # feign日志以什么级别监控哪个接口
+    cn.zk.springcloud.service.PaymentFeignService: debug
