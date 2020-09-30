@@ -31,7 +31,7 @@ public class PaymentService implements IPaymentService {
     @Override
     public String paymentInfo_TimeOut(Integer id) {
         //模拟超时
-        int timeNum = 3;
+        int timeNum = 5;
         try {
             TimeUnit.SECONDS.sleep(timeNum);            //秒
 //            TimeUnit.MILLISECONDS.sleep(timeNum);     //毫秒
