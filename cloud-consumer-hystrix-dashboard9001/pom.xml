@@ -8,38 +8,20 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
-    <artifactId>cloud-provider-hystrix-payment8001</artifactId>
-
+    <!-- 服务监控，仪表盘 -->
+    <artifactId>cloud-consumer-hystrix-dashboard9001</artifactId>
     <dependencies>
-        <!--新增hystrix-->
+        <!--新增hystrix dashboard-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+            <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-        </dependency>
-
-        <!-- 引入自定义公共模块jar包 -->
-        <dependency>
-            <groupId>cn.zk.springcloud</groupId>
-            <artifactId>cloud-api-commons</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
         <!-- ↓↓↓↓↓↓  注：被监控的服务端需要该依赖 ↓↓↓↓↓↓-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <!-- ↑↑↑↑↑↑  注：被监控的服务端需要该依赖 ↑↑↑↑↑↑-->
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -58,4 +40,5 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
 </project>

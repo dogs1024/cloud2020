@@ -30,10 +30,14 @@
     <!-- 整合consul -->
     <module>cloud-providerconsul-payment8006</module>
     <module>cloud-consumerconsul-order80</module>
+    <!-- 服务降级 -->
       <module>cloud-consumer-feign-order80</module>
       <module>cloud-provider-hystrix-payment8001</module>
       <module>cloud-consumer-feign-hystrix-order80</module>
-
+    <!-- 服务监控HystrixDashboard -->
+      <module>cloud-consumer-hystrix-dashboard9001</module>
+    <!-- Gateway网关 -->
+      <module>cloud-gateway-gateway9100</module>
 
   </modules>
   <!-- 父工程 -->

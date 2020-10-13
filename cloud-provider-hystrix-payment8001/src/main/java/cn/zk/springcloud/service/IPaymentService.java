@@ -12,4 +12,7 @@ public interface IPaymentService {
 
     //延时读取
     String paymentInfo_TimeOut(Integer id);
+
+    //服务熔断
+    String paymentCircuitBreaker(Integer id);
 }
