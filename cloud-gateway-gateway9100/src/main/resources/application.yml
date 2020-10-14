@@ -5,22 +5,32 @@ spring:
     name: cloud-gateway
   cloud:
     gateway:
+      discovery:
+        locator:
+          enabled: true               # 开启动态路由。（通过注册中心的微服务名称进行动态路由）
+
       routes:
         - id: payment_routh #路由的ID，没有固定规则但要求唯一，建议配合服务名
-          uri: http://localhost:8001   #匹配后提供服务的路由地址
+#          uri: http://localhost:8001   # 匹配后提供服务的路由地址。缺点：ip、port固定写死
+          uri: lb://CLOUD-PAYMENT-SERVICE    # 匹配注册中心服务名称实现动态路由。优点：不在关注服务端的ip、prot
           predicates:
             - Path=/payment/get/**   #断言,路径相匹配的进行路由
 
         - id: payment_routh2
-          uri: http://localhost:8001
+#          uri: http://localhost:8001         # 一个目标地址
+          uri: lb://CLOUD-PAYMENT-SERVICE     # 多个目标地址。注：lb:// 为固定格式.表示启用Geteway的负载均衡功能
           predicates:
             - Path=/payment/lb/**   #断言,路径相匹配的进行路由
-
+#            - After=2020-10-14T16:44:18.011+08:00[Asia/Shanghai]    # 匹配在指定日期时间之后发生的请求
+#            - Before=2020-10-14T15:44:18.011+08:00[Asia/Shanghai]   # 匹配在指定日期时间之前发生的请求
+#            - Between=2020-10-14T16:44:18.011+08:00[Asia/Shanghai],2020-10-14T15:44:18.011+08:00[Asia/Shanghai]     # 匹配在指定日期时间之间发生的请求
+#            - Cookie=username,zk                                  # 匹配指定Cookie发生的请求
+#            - Header=X-Request-Id, \d+                            # 请求头要有X-Request-Id属性并且值为整数的正则表达式
 
 eureka:
   instance:
     hostname: cloud-gateway-service
-  client:
+  client:   # 服务提供者provider注册进eureka服务列表内
     service-url:
       register-with-eureka: true
       fetch-registry: true
