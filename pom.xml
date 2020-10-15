@@ -38,6 +38,8 @@
       <module>cloud-consumer-hystrix-dashboard9001</module>
     <!-- Gateway网关 -->
       <module>cloud-gateway-gateway9100</module>
+    <!-- Config服务端配置 -->
+      <module>cloud-config-center-3344</module>
 
   </modules>
   <!-- 父工程 -->

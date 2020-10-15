@@ -1,0 +1,18 @@
+# 当子模块多的时候，抽取一个公共的父.yml配置文件。也利于快速切换数据源。
+server:
+  port: 3344
+spring:
+  application:
+    name: cloud-config-center
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/zkactive/cloud-config.git
+          search-paths:
+            - springcloud-config
+      label: master
+eureka:
+  client:
+    service-url:
+      defaultZone:  http://localhost:7001/eureka
