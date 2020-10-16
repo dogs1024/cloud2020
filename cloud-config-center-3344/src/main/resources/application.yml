@@ -10,8 +10,10 @@ spring:
         git:
           uri: https://github.com/zkactive/cloud-config.git
           search-paths:
-            - springcloud-config
+            - cloud-config
       label: master
+
+# 服务注册到eureka注册中心
 eureka:
   client:
     service-url:
