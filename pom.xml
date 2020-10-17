@@ -40,8 +40,9 @@
       <module>cloud-gateway-gateway9100</module>
     <!-- Config服务端配置 -->
       <module>cloud-config-center-3344</module>
+    <!-- Config客户端集群 -->
       <module>cloud-config-client-3355</module>
-
+      <module>cloud-config-client-3366</module>
   </modules>
   <!-- 父工程 -->
   <packaging>pom</packaging>
