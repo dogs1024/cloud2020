@@ -11,6 +11,8 @@ spring:
       config:
         server-addr: localhost:8848 #配置中心地址
         file-extension: yaml #指定yaml格式的配置
+        group: DEV_GROUP
+        namespace: ed47dd9e-3efc-454b-a98d-fac05a97e2a6
 
 # 在 Nacos Spring Cloud 中，dataId 的完整格式如下：
 # ${prefix}-${spring.profiles.active}.${file-extension}
