@@ -12,6 +12,7 @@ spring:
       transport:
         dashboard: localhost:8080   # 配置Sentinel dashboard地址
         port: 8719  #默认8719，假如被占用了会自动从8719开始依次+1扫描。直至找到未被占用的端口
+      # 将流控规则持久化到nacos
       datasource:
         ds1:
           nacos:
