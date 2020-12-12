@@ -193,7 +193,9 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
+                    <!-- fork，如果没有该配置，devtools不会起作用。也不会restart -->
                     <fork>true</fork>
+                    <!-- 支持静态文件热部署 -->
                     <addResources>true</addResources>
                 </configuration>
             </plugin>
@@ -207,6 +209,15 @@
                 </configuration>
             </plugin>
 
+<!--            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.2.3</version>
+                <configuration>
+                    &lt;!&ndash; 没有web.xml&ndash;&gt;
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>-->
         </plugins>
     </build>
 </project>

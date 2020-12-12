@@ -9,6 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <packaging>jar</packaging>
+
     <artifactId>cloud-eureka-server7001</artifactId>
 
     <dependencies>
@@ -62,9 +64,26 @@
             <artifactId>junit</artifactId>
         </dependency>
     </dependencies>
+
     <!-- 使用指定的jdk版本编译 -->
     <build>
         <plugins>
+            <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <!-- 指定入口主类Main -->
+                <configuration>
+                    <mainClass>cn.zk.springcloud.EurekaMain7001</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
